@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+  <h2>Buat QR Code dari Link</h2>
+
+  <input
+    type="text"
+    id="link"
+    placeholder="Masukkan link di sini"
+    style="width:300px; padding:10px;"
+  >
+
+  <button onclick="buatQR()">Buat QR Code</button>
+
+  <div id="qrcode" style="margin-top:20px;"></div>
+
+  <script>
+    function buatQR() {
+      const link = document.getElementById("link").value;
+      const qr = document.getElementById("qrcode");
+
+      qr.innerHTML = "";
+
+      if (!link) {
+        alert("Masukkan link terlebih dahulu!");
+        return;
+      }
+
+      new QRCode(qr, {
+        text: link,
+        width: 250,
+        height: 250
+      });
+    }
+  </script>
+
+</body>
+</html>
